@@ -4,7 +4,7 @@
 
     <h1> Welcome to NSU Jobs</h1>
 
-    <h2><a href="{% url webapp:login}">Login</a></h2>
-    <h2><a href="{% url webapp:signup}">Signup</a></h2>
-    <h2><a href="{% url webapp:logout}">Logout</a></h2>
+    <h2><a href="{% url 'webapp:login' %}">Login</a></h2>
+    <h2><a href="{% url 'webapp:signup' %}">Signup</a></h2>
+    <h2><a href="{% url 'webapp:logout' %}">Logout</a></h2>
 {% endblock %}
