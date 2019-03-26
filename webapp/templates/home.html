@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>NSU JOBS - HOME</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content %}
 
     <h1> Welcome to NSU Jobs</h1>
-s
-</body>
-</html>
+
+    <h2><a href="{% url webapp:login}">Login</a></h2>
+    <h2><a href="{% url webapp:signup}">Signup</a></h2>
+    <h2><a href="{% url webapp:logout}">Logout</a></h2>
+{% endblock %}

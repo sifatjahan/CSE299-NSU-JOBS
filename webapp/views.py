@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+
+
+# Login
 
 def user_login(request):
     context = {}
@@ -15,7 +19,7 @@ def user_login(request):
                 return redirect(next)
             else:
                 messages.success(request, "You have successfully logged in!")
-                return redirect('finance_management:account')
+                return redirect('webapp:home')
         else:
             messages.error(request, "Provide valid credentials.")
             return render(request, 'auth/login.html')
@@ -23,7 +27,9 @@ def user_login(request):
     else:
         return render(request, 'auth/login.html', context)
 
-def signup(request):
+# Signup
+
+def user_signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -32,15 +38,22 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('home')
+            return redirect('webapp:home')
     else:
         form = UserCreationForm()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'auth/signup.html', {'form': form})
+
+# Logout
 
 def user_logout(request):
     messages.success(request, "You have been logged out!")
     logout(request)
-    return redirect('base:login')
+    return redirect('webapp:login')
 
 def home(request):
     return render(request, 'home.html', {})
+
+# Show Student Profile
+
+# Add Student Profile
+
