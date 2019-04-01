@@ -1,4 +1,5 @@
-from django.db import forms
+from django import forms
+
 
 class AddStudent(forms.Form):
     std_email = forms.EmailField()
@@ -20,7 +21,8 @@ class AddStudent(forms.Form):
     skills = forms.CharField(max_length=2048)
     experience = forms.CharField(max_length=2048)
     awards = forms.CharField(max_length=2048)
-    picture = forms.ImageField(upload_to='pp/')
+    # picture = forms.ImageField(upload_to='pp/')
+
 
 class Company(forms.Form):
     com_email = forms.EmailField()

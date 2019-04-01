@@ -1,32 +1,121 @@
 {% extends 'base.html' %}
 {% load widget_tweaks %}
 
+{% block head %}
+<style>
+    body {
+        font-family: "Lato", sans-serif;
+    }
+
+    .main-head {
+        height: 150px;
+        background: #FFF;
+
+    }
+
+    .sidenav {
+        height: 100%;
+        background-color: #000;
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
+
+
+    .main {
+        padding: 0px 10px;
+    }
+
+    @media screen and (max-height: 450px) {
+        .sidenav {
+            padding-top: 15px;
+        }
+    }
+
+    @media screen and (max-width: 450px) {
+        .login-form {
+            margin-top: 10%;
+        }
+
+        .register-form {
+            margin-top: 10%;
+        }
+    }
+
+    @media screen and (min-width: 768px) {
+        .main {
+            margin-left: 40%;
+        }
+
+        .sidenav {
+            width: 40%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+        }
+
+        .login-form {
+            margin-top: 80%;
+        }
+
+        .register-form {
+            margin-top: 20%;
+        }
+    }
+
+    .login-main-text {
+        margin-top: 20%;
+        padding: 60px;
+        color: #fff;
+    }
+
+    .login-main-text h2 {
+        font-weight: 300;
+    }
+
+    .btn-black {
+        background-color: #000 !important;
+        color: #fff;
+    }
+</style>
+{% endblock %}
+
+
 {% block content %}
 
-<form method="post" action="{% url 'webapp:login' %}" style="display: flex; align-items: center; flex-direction: column; margin: 50px 20px">
-
-    {% csrf_token %}
-
-    <div class="form-group" style=" min-width: 300px;">
-        <p style="text-align: center">Username</p>
-        <input class="form-control" type="text" name="username" id="username">
+<div class="sidenav">
+    <div class="login-main-text">
+        <h2>Application<br> Login Page</h2>
+        <p>Login or register from here to access.</p>
     </div>
-    <div class="form-group" style=" min-width: 300px;">
-        <p style="text-align: center">Password</p>
-        <input class="form-control" type="password" name="password" id="password">
+</div>
+<div class="main">
+    <div class="col-md-6 col-sm-12">
+        <div class="login-form">
+            <form method="post" action="{% url 'webapp:login' %}">
+
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" class="form-control" placeholder="Username" name="username" id="username">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control" placeholder="Password" name="password" id="password">
+                </div>
+                <button type="submit" class="btn btn-black">Login</button>
+                <button type="submit" class="btn btn-secondary"><a style="color: white"
+                        href="{% url 'webapp:signup'%}">Signup</a></button>
+
+                <input type="hidden" name="next" value="{{ next }}">
+
+                <p style="color: red; width: 300px; text-align: center">
+                    {{error}}<br>
+                </p>
+            </form>
+        </div>
     </div>
-
-    <div class="form-group" style="justify-content: space-around; min-width: 300px;
-          display: flex; flex-direction: row">
-        <a class="btn btn-light" href="/admin/">Signup</a>
-        <input type="submit" class="btn btn-primary" value="Login">
-    </div>
-
-    <input type="hidden" name="next" value="{{ next }}">
-
-    <p style="color: red; width: 300px; text-align: center">
-        {{error}}<br>
-    </p>
-</form>
+</div>
 
 {% endblock %}
