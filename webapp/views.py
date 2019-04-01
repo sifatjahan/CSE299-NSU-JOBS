@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
+from django.contrib.auth.models import User
 
+from .models import *
+from .forms import *
 
 # Login
 
@@ -51,9 +54,52 @@ def user_logout(request):
     return redirect('webapp:login')
 
 def home(request):
-    return render(request, 'home.html', {})
+    return render(request, 'home.html')
 
 # Show Student Profile
 
-# Add Student Profile
+def student_profile(request, userID):
+    user = User.objects.get(username=userID)
 
+    return render(request, 'profile/student.html', {'user': user})
+
+# Add/Edit Student Profile
+
+def cv(request):
+    pass
+
+# Show Company Profile
+
+def company_profile(request, userID):
+    user = User.objects.get(username=userID)
+
+    return render(request, 'profile/company.html', {'user', user})
+
+# Show Job request
+
+def view_job(request, ID):
+    return render(request, 'jobs/view.html', {})
+
+# List Job request
+def list_all_jobs(request):
+    jobs = []
+    return jobs
+
+def show_jobs(request, list):
+    return render(request, 'jobs/list.html', {})
+
+# Add Job requests
+
+def add_job(request):
+    return render(request, 'jobs/add.html', {})
+
+# Search Job requests
+
+def search_job(request):
+    jobs = []
+    return jobs
+
+# Search Student's Skill
+
+def search_skill(request):
+    pass
