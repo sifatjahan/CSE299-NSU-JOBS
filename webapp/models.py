@@ -35,3 +35,20 @@ class Student(models.Model):
     @receiver(post_save, sender=User)
     def save_student(sender, instance, **kwargs):
         instance.student.save()
+
+class Company(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    com_email = models.EmailField()
+    com_name = models.CharField(max_length=128)
+    com_bio = models.CharField(max_length=256, null=True)
+    com_contact = models.CharField(max_length=14)
+    skills = models.CharField(max_length=2048)
+
+    @receiver(post_save, sender=User)
+    def create_company(sender, instance, created, **kwargs):
+        if created:
+            Company.objects.create(user=instance)
+
+    @receiver(post_save, sender=User)
+    def save_company(sender, instance, **kwargs):
+        instance.company.save()

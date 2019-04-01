@@ -21,3 +21,10 @@ class AddStudent(forms.Form):
     experience = forms.CharField(max_length=2048)
     awards = forms.CharField(max_length=2048)
     picture = forms.ImageField(upload_to='pp/')
+
+class Company(forms.Form):
+    com_email = forms.EmailField()
+    com_name = forms.CharField()
+    com_bio = forms.CharField()
+    com_contact = forms.CharField()
+    skills = forms.CharField()

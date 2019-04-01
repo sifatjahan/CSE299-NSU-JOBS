@@ -1,2 +1,4 @@
-django
-django-widget-tweaks
+Django==2.2
+django-widget-tweaks==1.4.3
+Pillow==5.4.1
+django-registration==3.0
