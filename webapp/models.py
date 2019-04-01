@@ -4,6 +4,8 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 # Create your models here.
+
+
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     std_email = models.EmailField()
@@ -35,6 +37,7 @@ class Student(models.Model):
     @receiver(post_save, sender=User)
     def save_student(sender, instance, **kwargs):
         instance.student.save()
+
 
 class Company(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

@@ -2,7 +2,7 @@
 
 {% block content %}
 
-    <h1> Welcome to NSU Jobs</h1>
+    <h1> Welcome to NSU Jobs, {{ user }}</h1>
 
     <h2><a href="{% url 'webapp:login' %}">Login</a></h2>
     <h2><a href="{% url 'webapp:signup' %}">Signup</a></h2>
