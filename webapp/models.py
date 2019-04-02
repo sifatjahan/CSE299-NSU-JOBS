@@ -27,7 +27,7 @@ class Student(models.Model):
     skills = models.CharField(max_length=2048)
     experience = models.CharField(max_length=2048)
     awards = models.CharField(max_length=2048)
-    picture = models.ImageField(upload_to='pp/')
+    # picture = models.ImageField(upload_to='pp/')
 
     @receiver(post_save, sender=User)
     def create_student(sender, instance, created, **kwargs):
