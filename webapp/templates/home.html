@@ -1,10 +1,32 @@
 {% extends 'base.html' %}
 
 {% block body %}
+<head>
+        <style>
+        div.b {
+          text-align: center;
+          border: 1px solid gray;
+  padding: 8px;
 
-    <h1> Welcome to NSU Jobs, {{ user }}</h1>
+          
+          }
+          
+        
+        </style>
+        </head>
+        <body>
+        <div class="b">
 
-    <h2><a href="{% url 'webapp:login' %}">Login</a></h2>
-    <h2><a href="{% url 'webapp:signup' %}">Signup</a></h2>
-    <h2><a href="{% url 'webapp:logout' %}">Logout</a></h2>
+    <br>
+    <br>
+    <h1><u><b> Welcome to NSU.JOBS,COM</b></u>  <p>{{ user }}</p></h1>
+
+    <br>
+    <br>
+    <br>
+    <h2>This is a paragraph, normal.</h2>
+    
+
+</div>
+  
 {% endblock %}
