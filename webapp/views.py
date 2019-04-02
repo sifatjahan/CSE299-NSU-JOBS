@@ -72,7 +72,49 @@ def student_profile(request, userID):
 
 
 def cv(request):
-    pass
+
+    user = request.user
+
+    if request.method == 'POST':
+
+        form = AddStudent(request.POST)
+
+        if form.is_valid():
+            profile = Student(
+                user=user,
+                std_email=form.cleaned_data['std_email'],
+                std_name=form.cleaned_data['std_name'],
+                std_bio=form.cleaned_data['std_bio'],
+                std_contact=form.cleaned_data['std_contact'],
+                ssc_int=form.cleaned_data['ssc_int'],
+                ssc_year=form.cleaned_data['ssc_year'],
+                ssc_cgpa=form.cleaned_data['ssc_cgpa'],
+                hsc_int=form.cleaned_data['hsc_int'],
+                hsc_year=form.cleaned_data['hsc_year'],
+                hsc_cgpa=form.cleaned_data['hsc_cgpa'],
+                honor_int=form.cleaned_data['honor_int'],
+                honor_year=form.cleaned_data['honor_year'],
+                honor_cgpa=form.cleaned_data['honor_cgpa'],
+                master_int=form.cleaned_data['master_int'],
+                master_year=form.cleaned_data['master_year'],
+                master_cgpa=form.cleaned_data['master_cgpa'],
+                skills=form.cleaned_data['skills'],
+                experience=form.cleaned_data['experience'],
+                awards=form.cleaned_data['awards'],
+            )
+            profile.save()
+            messages.success(request, 'CV added/edited!')
+            return redirect('webapp:profile')
+        
+        else:
+            messages.warning(request, 'CV couldn\'t be added/edited!')
+            return redirect('webapp:profile')
+
+    else:
+        form = AddStudent()
+        return render(request, 'profile/cv.html', {'form': form, 'user': user})
+
+
 
 # Show Company Profile
 
