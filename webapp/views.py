@@ -63,8 +63,8 @@ def home(request):
 # Show Student Profile
 
 
-def student_profile(request, userID):
-    user = User.objects.get(username=userID)
+def student_profile(request):
+    user = request.user
 
     return render(request, 'profile/student.html', {'user': user})
 
@@ -80,32 +80,29 @@ def cv(request):
         form = AddStudent(request.POST)
 
         if form.is_valid():
-            profile = Student(
-                user=user,
-                std_email=form.cleaned_data['std_email'],
-                std_name=form.cleaned_data['std_name'],
-                std_bio=form.cleaned_data['std_bio'],
-                std_contact=form.cleaned_data['std_contact'],
-                ssc_int=form.cleaned_data['ssc_int'],
-                ssc_year=form.cleaned_data['ssc_year'],
-                ssc_cgpa=form.cleaned_data['ssc_cgpa'],
-                hsc_int=form.cleaned_data['hsc_int'],
-                hsc_year=form.cleaned_data['hsc_year'],
-                hsc_cgpa=form.cleaned_data['hsc_cgpa'],
-                honor_int=form.cleaned_data['honor_int'],
-                honor_year=form.cleaned_data['honor_year'],
-                honor_cgpa=form.cleaned_data['honor_cgpa'],
-                master_int=form.cleaned_data['master_int'],
-                master_year=form.cleaned_data['master_year'],
-                master_cgpa=form.cleaned_data['master_cgpa'],
-                skills=form.cleaned_data['skills'],
-                experience=form.cleaned_data['experience'],
-                awards=form.cleaned_data['awards'],
-            )
-            profile.save()
+            user.student.std_email = form.cleaned_data['std_email'],
+            user.student.std_name = form.cleaned_data['std_name'],
+            user.student.std_bio = form.cleaned_data['std_bio'],
+            user.student.std_contact = form.cleaned_data['std_contact'],
+            user.student.ssc_int = form.cleaned_data['ssc_int'],
+            user.student.ssc_year = form.cleaned_data['ssc_year'],
+            user.student.ssc_cgpa = form.cleaned_data['ssc_cgpa'],
+            user.student.hsc_int = form.cleaned_data['hsc_int'],
+            user.student.hsc_year = form.cleaned_data['hsc_year'],
+            user.student.hsc_cgpa = form.cleaned_data['hsc_cgpa'],
+            user.student.honor_int = form.cleaned_data['honor_int'],
+            user.student.honor_year = form.cleaned_data['honor_year'],
+            user.student.honor_cgpa = form.cleaned_data['honor_cgpa'],
+            user.student.master_int = form.cleaned_data['master_int'],
+            user.student.master_year = form.cleaned_data['master_year'],
+            user.student.master_cgpa = form.cleaned_data['master_cgpa'],
+            user.student.skills = form.cleaned_data['skills'],
+            user.student.experience = form.cleaned_data['experience'],
+            user.student.awards = form.cleaned_data['awards'],
+            user.save()
             messages.success(request, 'CV added/edited!')
             return redirect('webapp:profile')
-        
+
         else:
             messages.warning(request, 'CV couldn\'t be added/edited!')
             return redirect('webapp:profile')
@@ -115,37 +112,63 @@ def cv(request):
         return render(request, 'profile/cv.html', {'form': form, 'user': user})
 
 
-
 # Show Company Profile
 
 
-def company_profile(request, userID):
-    user = User.objects.get(username=userID)
+# def company_profile(request, userID):
+#     user = User.objects.get(username=userID)
 
-    return render(request, 'profile/company.html', {'user', user})
+#     return render(request, 'profile/company.html', {'user', user})
+
+# Add Job
+
+def add_job(request):
+
+    if request.method == 'POST':
+        form = AddJobs(request.POST)
+
+        if form.is_valid():
+            job = Jobs(
+                com_name = form.cleaned_data['com_name'],
+                category = form.cleaned_data['category'],
+                post = form.cleaned_data['post'],
+                vacancy = form.cleaned_data['vacancy'],
+                hours = form.cleaned_data['hours'],
+                salary = form.cleaned_data['salary'],
+                com_email = form.cleaned_data['com_email'],
+                com_contact = form.cleaned_data['com_contact'],
+            )
+            job.save()
+            messages.success(request, 'Job added!')
+            return redirect('webapp:show_jobs')
+
+        else:
+            messages.warning(request, 'Job can\'t be added!')
+            return redirect('webapp:show_jobs')
+
+    else:
+        form = AddJobs()
+        return render(request, 'jobs/add.html', {'form': form})
 
 # Show Job request
 
-
 def view_job(request, ID):
-    return render(request, 'jobs/view.html', {})
+    job = Jobs.objects.get(id=ID)
+    return render(request, 'jobs/job.html', {'job': job})
 
 # List Job request
 
 
-def list_all_jobs(request):
-    jobs = []
-    return jobs
+# def list_all_jobs(request):
+#     jobs = []
+#     return jobs
 
 
-def show_jobs(request, list):
-    return render(request, 'jobs/list.html', {})
+def show_jobs(request):
 
-# Add Job requests
+    jobs = Jobs.objects.all()
 
-
-def add_job(request):
-    return render(request, 'jobs/add.html', {})
+    return render(request, 'jobs/list.html', {'jobs': jobs})
 
 # Search Job requests
 

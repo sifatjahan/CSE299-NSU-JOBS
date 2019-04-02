@@ -2,5 +2,4 @@ autopep8
 Django
 django-registration
 django-widget-tweaks
-Pillow
 pylint

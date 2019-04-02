@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<table border='1'>
+        <tr>
+            <td>Company Name</td>
+            <td>{{ job.com_name }}</td>
+        </tr>
+        <tr>
+            <td>Job Category</td>
+            <td>{{ job.category }}</td>
+        </tr>
+        <tr>
+            <td>Post</td>
+            <td>{{job.post}}</td>
+        </tr>
+        <tr>
+            <td>Vacancy</td>
+            <td>{{job.vacancy}}</td>
+        </tr>
+        <tr>
+            <td>Working Hours</td>
+            <td>{{job.hours}}</td>
+        </tr>
+        <tr>
+            <td>Salary</td>
+            <td>{{job.salary}}</td>
+        </tr>
+        <th>
+            <td colspan="2">Contact Details</td>
+        </th>
+        <tr>
+            <td>Company Email</td>
+            <td>{{job.com_email}}</td>
+        </tr>
+        <tr>
+            <td>Company Contact</td>
+            <td>{{job.com_contact}}</td>
+        </tr>
+        <tr>
+            <td>Companny Name</td>
+            <td>{{job.com_name}}</td>
+        </tr>
+        <tr>
+            <td>Companny Name</td>
+            <td>{{job.com_name}}</td>
+        </tr>
+    
+    </table>
+{% endblock %}
