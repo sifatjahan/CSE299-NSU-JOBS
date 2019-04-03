@@ -1,8 +1,22 @@
 {% extends 'base.html' %}
 
 {% block body %}
+<head>
+        <style>
+        div.b {
+          text-align: center;
+          border: 1px solid gray;
+  padding: 8px;
 
-    <h1> Welcome to NSU Jobs, {{ user }}</h1>
+          
+          }
+          
+        
+        </style>
+        </head>
+        <body>
+        <div class="b">
+
 
     <h2><a href="{% url 'webapp:login' %}">Login</a></h2>
     <h2><a href="{% url 'webapp:signup' %}">Signup</a></h2>
@@ -11,4 +25,7 @@
     <h2><a href="{% url 'webapp:cv' %}">Add/Edit CV</a></h2>
     <h2><a href="{% url 'webapp:show_jobs' %}">Job List</a></h2>
     <h2><a href="{% url 'webapp:add_jobs' %}">Post Job</a></h2>
+
+</div>
+  
 {% endblock %}

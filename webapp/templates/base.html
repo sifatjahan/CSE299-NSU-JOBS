@@ -8,26 +8,82 @@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
     {% block head %}
+    <head>
+            <style>
+            div.a {
+              text-align: center;
+              background-color: #82898b;
+              border: 1px solid #fffdfd;
+              padding: 20px;
+ 
+    
+              
+              }
+              h1 {
+  text-align: center;
+  text-transform: uppercase;
+  color: rgb(3, 3, 3);
+ 
+}
+              
+            
+            </style>
+            </head>
+            
+            <body>
+            <div class="a">
+
+              <h1><b><u>NSU.JOBS.COM</u></b></h1>
+        </div>
+
+
+
+    </body>
     {% endblock %}
 </head>
 
-<body>
-
-    <nav class="navbar navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button> -->
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="#">Features</a>
-                <a class="nav-item nav-link" href="#">Pricing</a>
-                <a class="nav-item nav-link disabled" href="#">Disabled</a>
-            </div>
-        </div>
-    </nav>
+    <head>
+        <style>
+        ul {
+          list-style-type: none;
+          margin: 0;
+          padding: 0;
+          overflow: hidden;
+          background-color: #333;
+        }
+        
+        li {
+          float: left;
+        }
+        
+        li a {
+          display: block;
+          color: white;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+        }
+        
+        li a:hover {
+          background-color: #111;
+        }
+        </style>
+        </head>
+        <body>
+        
+        
+        <ul>
+            
+          <li><a class="active" href="{% url 'webapp:home' %}">Home</a></li>
+          <li><a href="#joboffers">Job Offers</a></li>
+          <li><a href="#postjob">Post Job</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="{% url 'webapp:login' %}">Login</a></li>
+          <li><a href="{% url 'webapp:signup' %}">Signup</a></li>
+          <li><a href="{% url 'webapp:logout' %}">Logout</a></li>
+        </ul>
+        
+        </body>
 
     {% block body %}
 
