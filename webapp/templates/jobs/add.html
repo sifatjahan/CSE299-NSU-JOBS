@@ -1,5 +1,53 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% load widget_tweaks %}
 
+{% block body %}
+
+<h1> JOB POST</h1>
+
+<form action="{% url 'webapp:add_jobs'%}" method="POST">
+{% csrf_token %}
+<table>
+    <tr>
+        <td>Company Name</td>
+        <td>{% render_field form.com_name class+="form-control" %}</td>
+    </tr>
+    <tr>
+        <td>Job Category</td>
+        <td>{% render_field form.category class+="form-control" %}</td>
+    </tr>
+    <tr>
+        <td>Post</td>
+        <td>{% render_field form.post class+="form-control" %}</td>
+    </tr>
+    <tr>
+        <td>Vacancy</td>
+        <td>{% render_field form.vacancy class+="form-control" %}</td>
+    </tr>
+    <tr>
+        <td>Working Hours</td>
+        <td>{% render_field form.hours class+="form-control" %}</td>
+    </tr>
+    <tr>
+        <td>Salary</td>
+        <td>{% render_field form.salary class+="form-control" %}</td>
+    </tr>
+    <th>
+        <td colspan="2">Contact Details</td>
+    </th>
+    <tr>
+        <td>Company Email</td>
+        <td>{% render_field form.com_email class+="form-control" %}</td>
+    </tr>
+    <tr>
+        <td>Company Contact</td>
+        <td>{% render_field form.com_contact class+="form-control" %}</td>
+    </tr>
+
+</table>
+
+
+<input type="submit" class="btn btn-primary" value="Submit">
+</form>
 {% endblock %}

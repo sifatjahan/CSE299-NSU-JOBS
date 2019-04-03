@@ -1,5 +1,24 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block body %}
+
+    <table border='1'>
+        <tr>
+            <td>Company Name</td>
+            <td>Job Category</td>
+            <td>Post</td>
+            <td>Vacancy</td>
+        </tr>
+        {% if jobs %}
+        {% for job in jobs %}
+        <tr>
+            <td>{{ job.com_name }}</td>
+            <td><a href="{% url 'webapp:view_job' job.id %}">{{ job.category }}</a></td>
+            <td>{{ job.post }}</td>
+            <td>{{ job.vacancy }}</td>
+        </tr>
+        {% endfor %}
+        {% endif%}
+    </table>
 
 {% endblock %}

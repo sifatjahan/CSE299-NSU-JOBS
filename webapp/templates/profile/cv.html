@@ -8,7 +8,7 @@
     <div class="form-group">
         {% csrf_token %}
         <label for="std_email">Email</label>
-        {% render_field form.std_email class+="form-control" %}
+        <input name="std_email">@northsouth.edu <br>
         <label for="std_name">Name</label>
         {% render_field form.std_name class+="form-control" %}
         <label for="std_bio">Bio</label>
@@ -16,11 +16,12 @@
         <label for="std_contact">Contact</label>
         {% render_field form.std_contact class+="form-control" %}
 
-       <br> <p> Education </p> </br>
+        <br>
+        <p> Education </p> </br>
 
 
         <table border="1">
-                <tr>
+            <tr>
                 <td>
                     Degree
                 </td>
@@ -31,66 +32,66 @@
                     Passing Year
                 </td>
                 <td>
-                        CGPA
-                    </td>
+                    CGPA
+                </td>
 
-                </tr>
-                <tr>
-                    <td>
-                        SSC / O LEVELs
-                    </td>
-                    <td>
-                        {% render_field form.ssc_int class+="form-control" %}
-                    </td>
-                    <td>
-                            {% render_field form.ssc_year class+="form-control" %}
-                    </td>
-                    <td>
-                            {% render_field form.ssc_cgpa class+="form-control" %}
-                    </td>
-                </tr>
-                <tr>
-                        <td>
-                            HSC / A LEVELs
-                        </td>
-                        <td>
-                            {% render_field form.hsc_int class+="form-control" %}
-                        </td>
-                        <td>
-                                {% render_field form.hsc_year class+="form-control" %}
-                        </td>
-                        <td>
-                                {% render_field form.hsc_cgpa class+="form-control" %}
-                        </td>
-                    </tr>
-                    <tr>
-                            <td>
-                                HONORS
-                            </td>
-                            <td>
-                                    {% render_field form.honor_int class+="form-control" %}
-                            </td>
-                            <td>
-                                    {% render_field form.honor_year class+="form-control" %}
-                            </td>
-                            <td>
-                                    {% render_field form.honor_cgpa class+="form-control" %}
-                            </td>
-                        </tr>
-                        <tr>
-                                <td>
-                                      MASTERS
-                                </td>
-                                <td>
-                                    {% render_field form.master_int class+="form-control" %}
-                                </td>
-                                <td>
-                                        {% render_field form.master_year class+="form-control" %}
-                                </td>
-                                <td>
-                                        {% render_field form.master_cgpa class+="form-control" %}
-                                </td>
-                            </tr>
+            </tr>
+            <tr>
+                <td>
+                    SSC / O LEVELs
+                </td>
+                <td>
+                    {% render_field form.ssc_int class+="form-control" %}
+                </td>
+                <td>
+                    {% render_field form.ssc_year class+="form-control" %}
+                </td>
+                <td>
+                    {% render_field form.ssc_cgpa class+="form-control" %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    HSC / A LEVELs
+                </td>
+                <td>
+                    {% render_field form.hsc_int class+="form-control" %}
+                </td>
+                <td>
+                    {% render_field form.hsc_year class+="form-control" %}
+                </td>
+                <td>
+                    {% render_field form.hsc_cgpa class+="form-control" %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    HONORS
+                </td>
+                <td>
+                    {% render_field form.honor_int class+="form-control" %}
+                </td>
+                <td>
+                    {% render_field form.honor_year class+="form-control" %}
+                </td>
+                <td>
+                    {% render_field form.honor_cgpa class+="form-control" %}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    MASTERS
+                </td>
+                <td>
+                    {% render_field form.master_int class+="form-control" %}
+                </td>
+                <td>
+                    {% render_field form.master_year class+="form-control" %}
+                </td>
+                <td>
+                    {% render_field form.master_cgpa class+="form-control" %}
+                </td>
+            </tr>
 
 
         </table>
@@ -104,7 +105,8 @@
         {% render_field form.experience class+="form-control" %}
         <label for="awards">Awards / Certificates</label>
         {% render_field form.awards class+="form-control" %}
-        
+
+        <input type="submit" class="btn btn-primary" value="Submit">
 
     </div>
 </form>

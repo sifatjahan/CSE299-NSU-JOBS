@@ -8,7 +8,7 @@ from django.dispatch import receiver
 
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    std_email = models.EmailField()
+    std_email = models.CharField(max_length=128)
     std_name = models.CharField(max_length=128)
     std_bio = models.CharField(max_length=256, null=True)
     std_contact = models.CharField(max_length=14)
@@ -39,19 +39,29 @@ class Student(models.Model):
         instance.student.save()
 
 
-class Company(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    com_email = models.EmailField()
+# class Company(models.Model):
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)
+#     com_email = models.EmailField()
+#     com_name = models.CharField(max_length=128)
+#     com_bio = models.CharField(max_length=256, null=True)
+#     com_contact = models.CharField(max_length=14)
+#     skills = models.CharField(max_length=2048)
+
+#     @receiver(post_save, sender=User)
+#     def create_company(sender, instance, created, **kwargs):
+#         if created:
+#             Company.objects.create(user=instance)
+
+#     @receiver(post_save, sender=User)
+#     def save_company(sender, instance, **kwargs):
+#         instance.company.save()
+
+class Jobs(models.Model):
     com_name = models.CharField(max_length=128)
-    com_bio = models.CharField(max_length=256, null=True)
+    category = models.CharField(max_length=128)
+    post = models.CharField(max_length=128)
+    vacancy = models.CharField(max_length=128)
+    hours = models.CharField(max_length=128)
+    salary = models.DecimalField(max_digits=14, decimal_places=2)
+    com_email = models.EmailField()
     com_contact = models.CharField(max_length=14)
-    skills = models.CharField(max_length=2048)
-
-    @receiver(post_save, sender=User)
-    def create_company(sender, instance, created, **kwargs):
-        if created:
-            Company.objects.create(user=instance)
-
-    @receiver(post_save, sender=User)
-    def save_company(sender, instance, **kwargs):
-        instance.company.save()

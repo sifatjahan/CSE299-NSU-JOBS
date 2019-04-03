@@ -1,5 +1,85 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block body %}
+
+<p>
+    Name : {{user.student.std_name}} <br>
+    Email : {{user.student.std_email}}@northsouth.edu <br>
+    Bio : {{user.student.std_bio}} <br>
+    Contact : {{user.student.std_contact}}
+</p>
+
+<table>
+    <tbody>
+        <th>
+        <td>Degree</td>
+        <td>Institution</td>
+        <td>Passing Year</td>
+        <td>CGPA</td>
+        </th>
+        <tr>
+            <td>
+                SSC / O Levels
+            </td>
+            <td>
+                {{ user.student.ssc_int }}
+            </td>
+            <td>
+                {{ user.student.ssc_year }}
+            </td>
+            <td>
+                {{ user.student.ssc_cgpa }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                HSC / A Levels
+            </td>
+            <td>
+                {{ user.student.hsc_int }}
+            </td>
+            <td>
+                {{ user.student.hsc_year }}
+            </td>
+            <td>
+                {{ user.student.hsc_cgpa }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Honors
+            </td>
+            <td>
+                {{ user.student.honor_int }}
+            </td>
+            <td>
+                {{ user.student.honor_year }}
+            </td>
+            <td>
+                {{ user.student.honor_cgpa }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Masters
+            </td>
+            <td>
+                {{ user.student.master_int }}
+            </td>
+            <td>
+                {{ user.student.master_year }}
+            </td>
+            <td>
+                {{ user.student.master_cgpa }}
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p>
+    Skills : {{ user.student.skills }} <br>
+    Experience : {{ user.student.experience }} <br>
+    Awards: {{ user.student.awards }}
+</p>
 
 {% endblock %}

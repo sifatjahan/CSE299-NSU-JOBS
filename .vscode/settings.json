@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "C:\\Users\\sakib\\AppData\\Local\\conda\\conda\\envs\\zpack\\python.exe",
+    "python.pythonPath": "C:\\Users\\sakib\\.conda\\envs\\novera\\python.exe",
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true
 }
