@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block body %}
+
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap">
+
+    <form class="col-xl-7 col-lg-7 col-md-12 col-sm-12 col-12" action="{% url 'webapp:search_skill' %}" method="POST">
+        <div
+            style="display: flex; justify-content: space-between; flex-wrap: nowrap; flex-direction: row; margin: 10px 0 0">
+            {% csrf_token %}
+
+            <div class="input-group mb-3">
+
+                {% render_field form.skill class+="form-control" %}
+
+                <div class="input-group-append">
+                    <input class="btn btn-outline-dark" type="submit" value="Search">
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<table border='1'>
+    <tr>
+        <td>Student Name</td>
+        <td>Email</td>
+        <td>Contact</td>
+    </tr>
+    {% if students %}
+    {% for Student in students %}
+    <tr>
+        <td>{{ student.st_name }}</td>
+        <td>{{ student.st_email }}@northsouth.edu</td>
+        <td>{{ student.st_contact }}</td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+</table>
+
+{% endblock %}
+
+
+

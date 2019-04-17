@@ -40,3 +40,6 @@ class AddJobs(forms.Form):
     salary = forms.DecimalField()
     com_email = forms.EmailField()
     com_contact = forms.CharField()
+
+class SearchSkill(forms.Form):
+    skill = forms.CharField()
