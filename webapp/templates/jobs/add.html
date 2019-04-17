@@ -3,51 +3,92 @@
 {% load widget_tweaks %}
 
 {% block body %}
+<style>
+ h2{
+    text-align: center;
+    text-transform: uppercase;
+    color: rgb(60, 73, 145);
+}
+</style>
+<br>
+   <h2><b><u>POST A JOB</u></b></h2><br>
+   <p style="margin-left:2.5em"><b>Fill up the form to post job offers. Please use your company's email address. Offers are only for NSU Students.</b></p>
+</style>
 
-<h1> JOB POST</h1>
 
-<form action="{% url 'webapp:add_jobs'%}" method="POST">
+<form style="margin-left: 2.5em;margin-right:10em;padding: 0 7em 2em 0;border-width: 2px; border-color: black; border-style:solid;"action="{% url 'webapp:add_jobs'%}" method="POST">
 {% csrf_token %}
+<style>
+    td {
+          text-align: center;
+          color: rgb(69, 132, 184);
+          }
+          
+h3 {
+    text-transform: uppercase;
+    color: rgb(60, 73, 145);
+   
+  }
+</style>
 <table>
+        
+                <br><h3 style="margin-left:2.5em"></h3style><b><u>Job Details</u><b></h3>
+            
     <tr>
-        <td>Company Name</td>
-        <td>{% render_field form.com_name class+="form-control" %}</td>
+        <td><b>Company Name:</b></td>
+        <td><br>{% render_field form.com_name class+="form-control" %}<br></td>
     </tr>
     <tr>
-        <td>Job Category</td>
-        <td>{% render_field form.category class+="form-control" %}</td>
+        <td><b>Job Category:</b></td>
+        <td><br>{% render_field form.category class+="form-control" %}<br></td>
     </tr>
     <tr>
-        <td>Post</td>
-        <td>{% render_field form.post class+="form-control" %}</td>
+        <td><b>Post</b></td>
+        <td><br>{% render_field form.post class+="form-control" %}<br></td>
     </tr>
     <tr>
-        <td>Vacancy</td>
-        <td>{% render_field form.vacancy class+="form-control" %}</td>
+        <td><b>Vacancy</b></td>
+        <td><br>{% render_field form.vacancy class+="form-control" %}<br></td>
     </tr>
     <tr>
-        <td>Working Hours</td>
-        <td>{% render_field form.hours class+="form-control" %}</td>
+        <td><b>Working Hours</b></td>
+        <td><br>{% render_field form.hours class+="form-control" %}<br></td>
     </tr>
     <tr>
-        <td>Salary</td>
-        <td>{% render_field form.salary class+="form-control" %}</td>
+        <td><b>Salary</b></td>
+        <td><br>{% render_field form.salary class+="form-control" %}<br></td>
     </tr>
+
+
     <th>
-        <td colspan="2">Contact Details</td>
+       <h3 style="margin-left:2.5em"><b><u>Contact Details</u></b></h3></td>
     </th>
     <tr>
-        <td>Company Email</td>
-        <td>{% render_field form.com_email class+="form-control" %}</td>
+        <td><b>Company Email</b></td>
+        <td><br>{% render_field form.com_email class+="form-control" %}<br></td>
     </tr>
     <tr>
-        <td>Company Contact</td>
-        <td>{% render_field form.com_contact class+="form-control" %}</td>
+        <td><b>Company Contact</b></td>
+        <td><br>{% render_field form.com_contact class+="form-control" %}<br></td>
     </tr>
 
 </table>
+<style>
+    .button {
+      background-color: rgb(16, 14, 107);
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    </style>
 
 
-<input type="submit" class="btn btn-primary" value="Submit">
+<input style="margin-left:40em" type="submit" class="button" value="Submit">
 </form>
 {% endblock %}
