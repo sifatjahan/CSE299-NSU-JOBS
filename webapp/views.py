@@ -166,9 +166,9 @@ def view_job(request, ID):
 
 def show_jobs(request):
 
-    jobs = Jobs.objects.all()
-
-    return render(request, 'jobs/list.html', {'jobs': jobs})
+    
+        jobs = Jobs.objects.all()
+        return render(request, 'jobs/list.html', {'jobs': jobs})
 
 # Search Job requests
 
@@ -181,4 +181,20 @@ def search_job(request):
 
 
 def search_skill(request):
-    pass
+
+    students = User.objects.all()
+
+    if request.method == 'POST':
+        form = SearchSkill(request.POST)
+
+        if form.is_valid():
+            students = User.objects.filter(skills__icontains=form.cleaned_data['skill'])
+            return render(request, 'skill.html', {'form': form, 'students': students})
+
+        else:
+            redirect('webapp:home')
+
+    else:
+        form = SearchSkill()
+        return render(request, 'skill.html', {'form': form, 'students': students})
+
